@@ -1,7 +1,16 @@
-const http = require('http');
+const https = require('https');
 
 function getAndPrintHTMLChunks(){
-http.get('http://nodejs.org/dist/index.json', function (res) {
+
+
+
+  var requestOptions = {
+    host: 'sytantris.github.io',
+    path: '/http-examples/step1.html'
+  };
+
+
+https.get(requestOptions, function (res) {
 
 
 
@@ -10,20 +19,14 @@ http.get('http://nodejs.org/dist/index.json', function (res) {
   let data = '';
 
   res.on('data', function (chunk) {
-    console.log('blow chunks');
+
     data += chunk;
-
+    console.log(chunk + '\n' );
 
   });
 
 
-  res.on('end', function () {
-    console.log('response body:');
-    console.log(data);
-     const prettyData = JSON.parse(data);
-  });
 
-  console.log('HEY MAN');
 });
 
 }
