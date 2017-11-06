@@ -16,12 +16,11 @@ https.get(requestOptions, function (res) {
 
   res.setEncoding('utf8');
 
-  let data = '';
+
 
   res.on('data', function (chunk) {
 
-    data += chunk;
-    console.log(chunk + '\n' );
+    console.log(chunk + '\n' + 'chunk length: ' + chunk.length + '\n' );
 
   });
 
